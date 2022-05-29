@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Interfaces\**" />
+    <Compile Remove="Mappings\MappingsDTO\**" />
+    <Content Remove="Interfaces\**" />
+    <Content Remove="Mappings\MappingsDTO\**" />
+    <EmbeddedResource Remove="Interfaces\**" />
+    <EmbeddedResource Remove="Mappings\MappingsDTO\**" />
+    <None Remove="Interfaces\**" />
+    <None Remove="Mappings\MappingsDTO\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Common\ApiErrorResult.cs" />
+    <Compile Remove="Common\ApiSuccessResult.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.4" />
+    <PackageReference Include="NLog" Version="4.7.15" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\PrintManagement.HMAC\VCSLib.HMAC.csproj" />
+    <ProjectReference Include="..\PrintManagement.Infrastructure\PrintManagement.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mappings\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,20 @@
+﻿@*@model PrintManagement.ApiIntegration.PrinterUsageLogDTO*@
+
+@{
+    ViewData["Title"] = "Nhật ký";
+
+    var token = ViewData["Token"] as string;
+}
+
+@section header
+{
+    Nhật ký - Chi tiết nhật ký - Xem tài liệu
+}
+
+<img src="~/template/Admin/Images/documentviewer.png" alt="Chưa có" style="width:260px; height:200px" />
+<br />
+<br />
+<button type="button" class="btn btn-warning">
+    <a class="fa fa-reply"></a> &nbsp;
+    @Html.ActionLink("Trở lại", "Details", new { id = ViewData["idPrintUsageLog"] })
+</button>

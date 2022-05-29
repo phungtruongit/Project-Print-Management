@@ -1,0 +1,32 @@
+﻿@model PrintManagement.ApiIntegration.FinancialConfigDTO
+
+<div class="col-md-8">
+    <div class="box box-warning">
+        <div class="box-header with-border">
+            <h3 class="box-title"><b><i class="fa fa-database"></i>&nbsp;&nbsp; Cấu hình Tài chính</b></h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <form asp-action="ApplyFinancialConfig">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Oid" class="form-control" />
+                <div class="form-group">
+                    <label class="control-label">Mã đơn vị tiền tệ</label>
+                    <input asp-for="CurrencyCode" class="form-control" value="@Model.CurrencyCode" required readonly/>
+                    <span asp-validation-for="CurrencyCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Chi phí in mặc định / trang (vnđ)</label>
+                    <input asp-for="DefaultPrintCost" class="form-control" value="@Model.DefaultPrintCost" required  type="number"/>
+                    <span asp-validation-for="DefaultPrintCost" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-success" style="width:110px">
+                    <a class="fa fa-check-circle"></a> &nbsp; Áp dụng
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

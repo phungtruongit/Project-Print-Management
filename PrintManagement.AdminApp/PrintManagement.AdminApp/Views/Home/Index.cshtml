@@ -1,0 +1,350 @@
+﻿@{
+    ViewData["Title"] = "Tổng quan";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var token = ViewData["Token"] as string;
+
+    var totalUsers = Convert.ToDecimal(ViewData["totalUsers"]);
+    var totalPrinters = Convert.ToDecimal(ViewData["totalPrinters"]);
+    var totalJob = Convert.ToDecimal(ViewData["totalJobs"]);
+    var totalPrintCosts = Convert.ToDecimal(ViewData["totalPrintCosts"]);
+
+    var lstNewUser = ViewData["lstNewUser"] as List<UserDTO>;
+    var lstNewLog = ViewData["lstNewLog"] as List<PrinterUsageLogDTO>;
+}
+@section header
+{
+    Tổng quan hệ thống
+}
+<style>
+    div a {
+        color: navy;
+    }
+</style>
+
+<!-- SỐ KÊ SỐ LƯỢNG TỔNG QUAN -->
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <p style="font-size:30px"><b>@String.Format("{0:n0}", totalUsers)</b></p>
+                <p>Tổng số người dùng</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-user"></i>
+            </div>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-green">
+            <div class="inner">
+                <p style="font-size:30px"><b>@String.Format("{0:n0}", totalPrinters)</b></p>
+                <p>Tổng số thiết bị</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-print"></i>
+            </div>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <p style="font-size:30px"><b>@String.Format("{0:n0}", totalJob)</b></p>
+                <p>Tổng số lượt in</p>
+            </div>
+
+            <div class="icon">
+                <i class="fa fa-files-o"></i>
+            </div>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <p style="font-size:30px"><b>@String.Format("{0:n0}", totalPrintCosts) VNĐ</b></p>
+                <p>Tổng chi phí in</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-money"></i>
+            </div>
+        </div>
+    </div><!-- ./col -->
+    <hr />
+</div><!-- /.row -->
+<hr />
+&nbsp;
+
+<!-- Main row -->
+<div class="row">
+    <!-- Top thiết bị sử dụng nhiều nhất -->
+    <div class="col-md-4">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title"><b><i class="fa fa-archive"></i>&nbsp;&nbsp; Top thiết bị sử dụng nhiều nhất</b></h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div id="chart_topUsagePrinter" style="height: 370px; width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top người dùng in nhiều nhất -->
+    <div class="col-md-8">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"><b><i class="fa fa-user-secret"></i>&nbsp;&nbsp; Top người dùng in nhiều nhất</b></h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div id="chart_topUsageUser" style="height: 370px; width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tổng quan lưu lượng in ấn -->
+    <div class="col-md-6">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title"><b><i class="fa fa-area-chart"></i>&nbsp;&nbsp; Tổng quan lưu lượng in ấn</b></h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div id="chart_printTraffic" style="height: 370px; width: 100%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tổng quan chi in ấn -->
+    <div class="col-md-6">
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title"><b><i class="fa fa-database"></i>&nbsp;&nbsp; Tổng quan chi in ấn</b></h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div id="chart_printExpenses" style="height: 370px; width: 100%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top nhật ký mới -->
+    <div class="col-md-8">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><b><i class="fa fa-pencil-square"></i>&nbsp;&nbsp; Top nhật ký mới nhất</b></h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            @if (lstNewLog != null)
+            {
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>Thời gian</th>
+                                    <th>Người dùng</th>
+                                    <th>Máy in</th>
+                                    <th>Tài liệu</th>
+                                    <th>Đã in</th>
+                                    <th>Thành tiền (VNĐ)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in lstNewLog)
+                                {
+                                    <tr>
+                                        <td><a href="/PrintUsageLog/Details/@item.Oid">@item.UsageDate</a></td>
+                                        <td>@item.UserName</td>
+                                        <td>@item.PrinterName</td>
+                                        <td>@item.DocumentName</td>
+                                        <td>@Html.DisplayFor(modelItem => item.IsPrinted)</td>
+                                        <td>@String.Format("{0:n0}", item.UsageCost)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+            <div class="box-footer text-center">
+                <a href="/PrintUsageLog/Index" class="uppercase">Xem tất cả nhật ký</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top người dùng mới nhất -->
+    <div class="col-md-4">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title"><b><i class="fa fa-user-plus"></i>&nbsp;&nbsp; Top người dùng mới nhất</b></h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body no-padding">
+                @if (lstNewUser != null)
+                {
+                    <ul class="users-list clearfix">
+                        @foreach (var item in lstNewUser)
+                        {
+                            <li>
+                                <img src="/template/Admin/Images/user.png" alt="User Image" style="width:26px; height:26px" />
+                                <a class="users-list-name" href="/User/Details/@item.Oid">@item.Name</a>
+                                <span class="users-list-date">@Convert.ToDateTime(item.CreatedDate).ToString("dd/MM/yyyy")</span>
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+            <div class="box-footer text-center">
+                <a href="/User/Index" class="uppercase">Xem tất cả người dùng</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<script>
+    window.onload = function () {
+
+    calculatePercentage();
+    chart.render();
+
+    function calculatePercentage() {
+        var dataPoint = chart.options.data[0].dataPoints;
+        var total = dataPoint[0].y;
+        for (var i = 0; i < dataPoint.length; i++) {
+            if (i == 0) {
+                chart.options.data[0].dataPoints[i].percentage = 100;
+            } else {
+                chart.options.data[0].dataPoints[i].percentage = ((dataPoint[i].y / total) * 100).toFixed(2);
+            }
+        }
+    }
+
+    }
+</script>
+
+
+<script>
+    window.onload = function () {
+
+    // Chart 2: TopUsageUser
+    var chart2 = new CanvasJS.Chart("chart_topUsageUser", {
+        animationEnabled: true,
+        title: {
+            text: ""
+        },
+        subtitles: [{
+            text: ""
+        }],
+        axisY: {
+            title: "",
+            gridThickness: 0
+        },
+        data: [{
+            type: "bar",
+            indexLabel: "{y}",
+            toolTipContent: "<b>{label}</b>: {y} trang",
+            dataPoints: @Html.Raw(ViewBag.DataPointsTopUsageUser)
+        }]
+    });
+
+
+    // Chart 3: TopUsagePrinter
+    var chart3 = new CanvasJS.Chart("chart_topUsagePrinter", {
+        theme: "light1", // "light1", "light2", "dark1", "dark2"
+        exportEnabled: true,
+        animationEnabled: true,
+        title: {
+            text: ""
+        },
+        subtitles: [{
+            text: ""
+        }],
+        data: [{
+            type: "pie",
+            startAngle: 270,
+            toolTipContent: "<b>{label}</b>: {y} trang",
+            showInLegend: "true",
+            legendText: "{label}",
+            indexLabel: "{label} - {y} trang",
+            dataPoints: @Html.Raw(ViewBag.DataPointsTopUsagePrinter)
+        }]
+    });
+
+
+    // Char 4: PrintTraffic
+    var chart4 = new CanvasJS.Chart("chart_printTraffic", {
+        theme: "light2",
+        animationEnabled: true,
+        title: {
+            text: ""
+        },
+        axisX: {
+            title: ""
+        },
+        axisY: {
+            title: "trang/tháng"
+        },
+        data: [{
+            type: "area",
+            color: "#0BB5FF",
+            markerSize: 0,
+            toolTipContent: "<b>{label}</b>: {y} trang",
+            dataPoints: @Html.Raw(ViewBag.DataPointsPrintTraffic)
+        }]
+    });
+
+
+    // Char 5: PrintExpenses
+    var chart5 = new CanvasJS.Chart("chart_printExpenses", {
+        animationEnabled: true,
+        theme: "light2", // "light1", "light2", "dark1", "dark2"
+        title: {
+            text: ""
+        },
+        axisY: {
+            title: "vnđ/tháng"
+        },
+        data: [{
+            type: "column",
+            toolTipContent: "<b>{label}</b>: {y} vnđ",
+            dataPoints: @Html.Raw(ViewBag.DataPointsPrintExpenses)
+        }]
+    });
+
+
+    // Render chart
+    chart2.render();
+    chart3.render();
+    chart4.render();
+    chart5.render();
+
+    }
+</script>
+}

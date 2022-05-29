@@ -1,0 +1,42 @@
+﻿@model DepartmentDTO
+@{
+    ViewData["Title"] = "Phòng ban";
+}
+
+@section header
+{
+    Phòng ban - Cập nhật phòng ban (#@Model.Name)
+}
+
+<div class="container-fluid">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-md-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <input type="hidden" asp-for="Oid" class="form-control" />
+
+                    <div class="form-group">
+                        <label class="control-label">Tên phòng ban</label>
+                        <input asp-for="Name" class="form-control" required />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group">
+                        <label class="control-label">Ghi chú</label>
+                        <input asp-for="Note" class="form-control" />
+                        <span asp-validation-for="Note" class="text-danger"></span>
+                        </div>*@
+
+                    <button type="submit" class="btn btn-primary" style="width:110px">
+                        <a class="fa fa-save"></a> &nbsp;Lưu lại
+                    </button>
+                    <button type="button" class="btn btn-warning" style="width:110px">
+                        <a class="fa fa-th-list"></a> &nbsp;
+                        @Html.ActionLink("Danh sách", "Index")
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

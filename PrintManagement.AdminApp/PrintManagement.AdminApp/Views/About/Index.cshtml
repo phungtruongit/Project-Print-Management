@@ -1,0 +1,31 @@
+﻿@model PrintManagement.ApiIntegration.SystemInfoDTO
+
+@{
+    ViewData["Title"] = "Thông tin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Thông tin hệ thống
+}
+<style>
+    div a {
+        color: navy;
+    }
+</style>
+<table style="width:60%">
+    <tr>
+        <td style="vertical-align:top" width="25%">
+            <img src="~/template/Admin/Images/GreenPrintHT_noneBg.png" alt="Chưa có" />
+        </td>
+        <td width="75%">
+            <b style="color:darkgreen; font-size:20px">@Html.DisplayFor(model=>model.Name)</b></p>
+            <p><i style="width:20px" class="fa fa-user"></i><b>Tác giả:&nbsp;</b>@Html.DisplayFor(model=>model.Author)</p>
+            <p><i style="width:20px" class="fa fa-rebel"></i><b>Phiên bản:&nbsp;</b>@Html.DisplayFor(model=>model.Version)</p>
+            <p><i style="width:20px" class="fa fa-cloud-upload"></i><b>Ngày cập nhật:&nbsp;</b>@Html.Raw(Convert.ToDateTime(new DateTime(2022,4,12)).ToString("dd/MM/yyyy"))</p>
+            <p><i style="width:20px" class="fa fa-phone-square"></i><b>Điện thoại:&nbsp;</b>@Html.DisplayFor(model=>model.Phone)</p>
+            <p><i style="width:20px" class="fa fa-envelope-square"></i><b>Email:&nbsp;</b>@Html.DisplayFor(model=>model.Email)</p>
+        </td>
+    </tr>
+</table>

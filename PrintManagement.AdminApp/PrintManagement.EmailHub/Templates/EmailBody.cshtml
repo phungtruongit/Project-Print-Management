@@ -1,0 +1,29 @@
+﻿@model PrintManagement.EmailHub.Models.EmailBody
+@{ }
+
+<style>
+    #content {
+        font-family: 'Times New Roman', Times, serif
+    }
+
+    table, td, th {
+        border: 1px solid black;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .info {
+        margin: 0px;
+    }
+</style>
+<div id="content" style="width:600px; padding:10px">
+    <img src="cid:@Model.BannerImageCID" alt="bannerGreenPrintHT" style="width:600px" />
+    @if (!string.IsNullOrEmpty(Model.RecipientName)) {
+        <p>Kính gửi: @Model.RecipientName</p>
+    }
+    <p>@Model.MainContent</p>
+    <p>Best regards!</p>
+</div>

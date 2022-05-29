@@ -1,0 +1,23 @@
+﻿@using PrintManagement.AdminApp.Reports
+
+@{
+    ViewData["Title"] = "Báo cáo thống kê";
+    Layout = "~/Views/Shared/_AdminReport.cshtml";
+
+    var systemInfo = (SystemInfoDTO)ViewData["systemInfo"];
+
+    var report = new Rpt_SystemOverview();
+    report.Parameters["ReportCreatedDate"].Value = DateTime.Now.ToString();
+    report.Parameters["Status"].Value = systemInfo.Status;
+    report.Parameters["TotalUser"].Value = String.Format("{0:n0}", systemInfo.TotalUser);
+    report.Parameters["TotalPrinter"].Value = String.Format("{0:n0}", systemInfo.TotalPrinter);
+    report.Parameters["TotalFileUploaded"].Value = String.Format("{0:n0}", systemInfo.TotalFileUploaded);
+    report.Parameters["TotalFileDownloaded"].Value = String.Format("{0:n0}", systemInfo.TotalFileDownload);
+    report.Parameters["TotalFilePrinted"].Value = String.Format("{0:n0}", systemInfo.TotalFilePrinted);
+    report.Parameters["TotalMoneyProvided"].Value = String.Format("{0:n0}", systemInfo.TotalMoneyProvided);
+}
+@section header
+{
+    <a href="/ReportStatistic/Index" style="color:darkgreen; text-decoration:underline">Báo cáo thống kê</a> - Báo cáo tổng quan hệ thống
+}
+@Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(report)

@@ -1,0 +1,99 @@
+﻿@model RegisterRequest
+
+@{
+    ViewData["Title"] = "Người dùng";
+
+    var selectListDepartments = ViewData["selectListDepartments"] as IEnumerable<SelectListItem>;
+    var selectListUserGroups = ViewData["selectListUserGroups"] as IEnumerable<SelectListItem>;
+}
+
+@section header
+{
+    Người dùng - Thêm mới người dùng
+}
+
+<div class="container-fluid">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label">Họ tên</label>
+                        <input asp-for="Name" class="form-control" required/>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Điện thoại</label>
+                        <input asp-for="Phone" class="form-control" required/>
+                        <span asp-validation-for="Phone" class="text-danger" ></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Email</label>
+                        <input asp-for="Email" class="form-control" required/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Tài khoản</label>
+                        <input asp-for="UserName" class="form-control" required/>
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Mật khẩu</label>
+                        <input asp-for="Password" class="form-control" required type="password"/>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Phòng ban</label>
+                        @Html.DropDownListFor(Model => Model.IdDepartment,selectListDepartments,"-- Phòng ban --",new { @class = "form-control"})
+                        <span asp-validation-for="IdDepartment" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Nhóm người dùng</label>
+                        @Html.DropDownListFor(Model => Model.IdUserGroup,selectListUserGroups,"-- Nhóm người dùng --",new { @class = "form-control"})
+                        <span asp-validation-for="IdUserGroup" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Số dư (VNĐ)</label>
+                        <input asp-for="Balance" class="form-control" required type="number" min="1000" step="1000" />
+                        <span asp-validation-for="Balance" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group">
+                        <label class="control-label">Ghi chú</label>
+                        <input asp-for="Note" class="form-control" />
+                        <span asp-validation-for="Note" class="text-danger"></span>
+                    </div>*@
+                    @* <div class="form-group">
+                        <label asp-for="IsAdmin" class="control-label"></label>
+                        <div class="editor-field">
+                        @Html.CheckBoxFor(model => model.IsAdmin)
+                        @Html.ValidationMessageFor(model => model.IsAdmin)
+                        </div>
+                        </div>*@
+                    <div class="form-group">
+                        <label class="control-label">Vô hiệu hoá</label>
+                        <div class="editor-field">
+                            @Html.CheckBoxFor(model => model.IsDisable)
+                            @Html.ValidationMessageFor(model => model.IsDisable)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Hạn chế</label>
+                        <div class="editor-field">
+                            @Html.CheckBoxFor(model => model.IsRestricted)
+                            @Html.ValidationMessageFor(model => model.IsRestricted)
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width:110px">
+                        <a class="fa fa-save"></a> &nbsp;Lưu lại
+                    </button>
+                    <button type="button" class="btn btn-warning" style="width:110px">
+                        <a class="fa fa-th-list"></a> &nbsp;
+                        @Html.ActionLink("Danh sách", "Index")
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

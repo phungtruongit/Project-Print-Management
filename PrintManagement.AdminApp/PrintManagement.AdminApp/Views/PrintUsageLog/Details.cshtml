@@ -1,0 +1,167 @@
+﻿@model PrinterUsageLogDTO
+
+@{
+    ViewData["Title"] = "Nhật ký";
+
+    //var token = ViewData["Token"] as string;
+}
+
+@section header
+{
+    Nhật ký - Chi tiết nhật ký (#@Model.UsageDate)
+}
+
+<div class="container-fluid">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-md-12">
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        Người gửi lệnh in:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UserName)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Thời gian sử dụng:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.UsageDate)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Tên Driver:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.DriverName)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Máy in:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.PrinterName)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Máy tạo lệnh in:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.MachineName)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Trạng thái:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.JobStatus)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Màu sắc:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.IsColor)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Tài liệu:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.DocumentName)
+                        <br />
+                    </dd>
+                    @*<dt class="col-sm-2">
+                        Sô trang đã in:
+                        </dt>
+                        <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.PagesPrinted)
+                        <br />
+                        </dd>*@
+                    <dt class="col-sm-2">
+                        Kiểu giấy:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.PaperKind)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Chiều dài:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.PaperLength)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Chiều rộng:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.PaperWidth)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Tổng số trang:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.TotalPages)
+                        <br />
+                    </dd>
+                    @if (Model.JobSize != 0)
+                    {
+                        <dt class="col-sm-2">
+                            kích thước tài liệu:
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.JobSize) Byte
+                            <br />
+                        </dd>
+                    }
+                    <dt class="col-sm-2">
+                        Landscape:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.IsLandscape)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        In 2 mặt:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.IsDuplex)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Đã in:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.IsPrinted)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Đã huỷ:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.IsCancelled)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Chi phí:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.Raw(@String.Format("{0:n0}", Model.UsageCost)) VNĐ
+                        <br />
+                    </dd>
+                </dl>
+                @*<button type="button" class="btn btn-primary">
+                    <a class="fa fa-eye"></a> &nbsp;
+                    @Html.ActionLink("Xem tài liệu", "DocumentViewer", new { idPrintUsageLog = Model.Oid, idDocument = Model.IdDocument})
+                </button>*@
+                <button type="button" class="btn btn-warning">
+                    <a class="fa fa-th-list"></a> &nbsp;
+                    @Html.ActionLink("Danh sách", "Index")
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

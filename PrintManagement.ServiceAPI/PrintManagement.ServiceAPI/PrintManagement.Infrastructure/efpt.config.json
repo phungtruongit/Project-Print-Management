@@ -1,0 +1,95 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "PrintManagementContext",
+   "ContextNamespace": "Infrastructure",
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": "Infrastructure",
+   "OutputContextPath": "Models",
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "PrintManagement",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[BackupConfig]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Department]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Document]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EmailConfig]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[FinancialConfig]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Printer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PrinterUsageLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Role]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SystemConfigOption]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SystemInfo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[User]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserConfig]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserRole]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[WatermarkConfig]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "VCS58\\SQLEXPRESS.PrintManagement",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}

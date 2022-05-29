@@ -1,0 +1,97 @@
+﻿@model DocumentDTO
+
+@{
+    ViewData["Title"] = "Chi tiết";
+}
+
+@section header
+{
+    Document - Chi tiết tài liệu
+}
+
+<div class="container-fluid">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-md-12">
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        Tên tài liệu:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Kích thước:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.SizeKb)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Loại tài liệu:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.MimeType)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Được phép sử dụng:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.IsUsageAllowed)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Mô tả:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Note)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Người tạo:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.CreatedBy)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Ngày tạo:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.Raw(Convert.ToDateTime(Model.CreatedDate).ToString("dd/MM/yyyy"))
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Người cập nhật:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.ModifiedBy)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Ngày cập nhật:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.Raw(Convert.ToDateTime(Model.ModifiedDate).ToString("dd/MM/yyyy"))
+                        <br />
+                    </dd>
+                </dl>
+
+                <embed src="~/ContentRepository/Documents/@Model.Name" width="1000px" height="2000px" />
+
+                @*<button type="button" class="btn btn-primary">
+                    <a class="fa fa-eye"></a> &nbsp;
+                    @Html.ActionLink("Xem tài liệu", "DocumentViewer", new { id = Model.Oid})
+                </button>*@
+                <button type="button" class="btn btn-primary">
+                    <a class="fa fa-download"></a> &nbsp;
+                    @Html.ActionLink("Tải tài liệu", "DownloadDocument", new { id = Model.Oid})
+                </button>
+                <button type="button" class="btn btn-warning">
+                    <a class="fa fa-th-list"></a> &nbsp;
+                    @Html.ActionLink("Danh sách", "Index")
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Remove="Views\User\Delete.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Controllers\AccountController.cs~RFb75cac.TMP" />
+		<None Remove="Reports\Rpt_PrintTrafficStatistic.Designer.cs~RF1e10617.TMP" />
+		<None Remove="Reports\Rpt_SystemOverview.cs~RFd8d4aa.TMP" />
+		<None Remove="Views\Shared\_Layout.cshtml.css" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\PrintManagement.ApiIntegration\PrintManagement.ApiIntegration.csproj" />
+		<ProjectReference Include="..\PrintManagement.EmailHub\PrintManagement.EmailHub.csproj" />
+		<ProjectReference Include="..\PrintManagement.WatermarkHub\PrintManagement.WatermarkHub.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+		<PackageReference Include="DevExpress.AspNetCore.Reporting" Version="21.2.6" />
+		<PackageReference Include="Microsoft.IdentityModel.Logging" Version="6.5.0" />
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+		<PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.161" />
+		<PackageReference Include="NLog" Version="4.7.15" />
+		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
+		<PackageReference Include="System.Management" Version="6.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="wwwroot\ContentRepository\Backups\" />
+		<Folder Include="wwwroot\ContentRepository\Documents\" />
+		<Folder Include="wwwroot\ContentRepository\Logs\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Reports\Rpt_PrintingExpensesStatistic.cs">
+	    <SubType>XtraReport</SubType>
+	  </Compile>
+	</ItemGroup>
+
+	<ProjectExtensions>
+		<VisualStudio>
+			<UserProperties wwwroot_4lib_4bootstrap_4dist_4css_4bootstrap-grid_1css_1map__JsonSchema="" />
+		</VisualStudio>
+	</ProjectExtensions>
+
+</Project>

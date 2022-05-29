@@ -1,0 +1,106 @@
+﻿@model PagedResult<DepartmentDTO>
+
+@{
+    ViewData["Title"] = "Phòng ban";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var token = ViewData["Token"] as string;
+
+    var i = Model.PageSize * (Model.PageIndex - 1);
+    string GetNumerOrder()
+    {
+        i++;
+        return Convert.ToString(i);
+    }
+}
+@section header
+{
+    Phòng ban - Danh sách phòng ban
+}
+
+@section Scripts{
+<script>
+    setTimeout(function () {
+        $('#msgAlert').fadeOut('slow');
+    }, 2000);
+</script>
+}
+<div class="container-fluid">
+    <div class="card mb-12">
+        <div class="card-header" style="margin-bottom:12px">
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <form asp-action="Index" method="get">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <input type="text" value="@ViewBag.Keyword" name="keyword" class="form-control" placeholder="Nhập nội dung tìm kiếm..." />
+                            </div>
+                            <div class="cold-md-3">
+                                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <button type="button" class="btn btn-success btn-admin" style="margin-bottom:10px; margin-left:5px; float: right; width:110px">
+                        <i class="fa fa-plus-square"></i> &nbsp;
+                        @Html.ActionLink("Thêm mới", "Create", "Department")
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                @if (ViewBag.SuccessMsg != null)
+                {
+                    <div id="msgAlert" class="alert alert-success" role="alert" style="position:fixed;z-index:99999;top:14%;right:35%">
+                        @ViewBag.SuccessMsg
+                    </div>
+                }
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                STT
+                            </th>
+                            <th>
+                                Tên phòng ban
+                            </th>
+                            <th>
+                                Ngày tạo
+                            </th>
+                            <th>
+                                Chức năng
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.Raw(GetNumerOrder())
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.Raw(@Convert.ToDateTime(item.CreatedDate).ToString("dd/MM/yyyy"))
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Xem", "Details", new { id = item.Oid }) |
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.Oid }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.Oid },new { onclick = "return confirm('Chắc chắn muốn xoá?');" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @await Component.InvokeAsync("Pager", Model)
+        </div>
+    </div>
+</div>

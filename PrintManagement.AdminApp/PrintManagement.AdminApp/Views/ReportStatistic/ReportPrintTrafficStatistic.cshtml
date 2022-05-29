@@ -1,0 +1,15 @@
+﻿@using PrintManagement.AdminApp.Reports
+@model IEnumerable<DataPoint>
+
+@{
+    ViewData["Title"] = "Báo cáo thống kê";
+    Layout = "~/Views/Shared/_AdminReport.cshtml";
+
+    var report = new Rpt_PrintTrafficStatistic(Model);
+    report.Parameters["ReportCreatedDate"].Value = DateTime.Now.ToString();
+}
+@section header
+{
+    <a href="/ReportStatistic/Index" style="color:darkgreen; text-decoration:underline">Báo cáo thống kê</a> - Báo cáo thống kê lưu lượng in ấn
+}
+@Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(report)

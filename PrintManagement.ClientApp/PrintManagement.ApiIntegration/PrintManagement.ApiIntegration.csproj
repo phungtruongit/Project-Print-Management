@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	  <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Serivices\BaseApiClient.cs" />
+    <Compile Remove="Serivices\DepartmentApiClient.cs" />
+    <Compile Remove="Serivices\DocumentApiClient.cs" />
+    <Compile Remove="Serivices\IDepartmentApiClient.cs" />
+    <Compile Remove="Serivices\IDocumentApiClient.cs" />
+    <Compile Remove="Serivices\IPrinterApiClient.cs" />
+    <Compile Remove="Serivices\IProductApiClient.cs" />
+    <Compile Remove="Serivices\IRoleApiClient.cs" />
+    <Compile Remove="Serivices\ISystemInfoApiClient.cs" />
+    <Compile Remove="Serivices\OrderApiClient.cs" />
+    <Compile Remove="Serivices\PrinterApiClient.cs" />
+    <Compile Remove="Serivices\ProductApiClient.cs" />
+    <Compile Remove="Serivices\RoleApiClient.cs" />
+    <Compile Remove="Serivices\SystemInfoApiClient.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\PrintManagement.HMAC\VCSLib.HMAC.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Tuỳ chọn";
+
+    var token = ViewData["Token"] as string;
+
+    var mEmailConfig = ViewData["EmailConfig"] as EmailConfigDTO;
+    var mBackupConfig = ViewData["BackupConfig"] as BackupConfigDTO;
+    var mFinancialConfig = ViewData["FinancialConfig"] as FinancialConfigDTO;
+    var mUserConfig = ViewData["UserConfig"] as UserConfigDTO;
+    var mWatermarkConfig = ViewData["WatermarkConfig"] as Tuple<WatermarkConfigDTO, WatermarkConfigDTO>;
+    //var mAdvancedConfig = ViewData["AdvancedConfig"] as AdvancedConfigDTO;
+}
+
+@section header
+{
+    Tuỳ chọn - Cấu hình hệ thống
+}
+
+<div class="row">
+    <br />
+    <!-- Cấu hình người dùng mới (waiting...)-->
+    <partial name="pUserConfig" model="mUserConfig"></partial>
+
+    <!-- Cấu hình Email -->
+    <partial name="pEmailConfig" model="mEmailConfig"></partial>
+
+    <!-- Cấu hình Tài chính (waiting...)-->
+    <partial name="pFinancialConfig" model="mFinancialConfig"></partial>
+
+    <!-- Cấu hình Watermark (waiting...)-->
+    <partial name="pWatermarkConfig" model="mWatermarkConfig"></partial>
+
+    <!-- Cấu hình Sao lưu dữ liệu -->
+    <partial name="pBackupConfig" model="mBackupConfig"></partial>
+
+    <!-- Cấu hình Nâng cao (waiting...)-->
+    @*<partial name="pAdvancedConfig" model="mBackupConfig"></partial>*@
+</div>

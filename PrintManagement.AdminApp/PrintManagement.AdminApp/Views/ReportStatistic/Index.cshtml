@@ -1,0 +1,25 @@
+﻿@model PrintManagement.ApiIntegration.SystemInfoDTO
+
+@{
+    ViewData["Title"] = "Báo cáo thống kê";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section header
+{
+    Báo cáo thống kê
+}
+<style>
+    div a {
+        color: navy;
+    }
+</style>
+
+<div style="font-size:15px">
+    <a class="fa fa-bar-chart" style="color:green; margin-bottom:10px"></a>&nbsp;&nbsp;@Html.ActionLink("Báo cáo tổng quan hệ thống", "ReportSystemOverview", "ReportStatistic")<br />
+    <a class="fa fa-bar-chart" style="color:green; margin-bottom:10px"></a>&nbsp;&nbsp;@Html.ActionLink("Báo cáo thống kê người dùng", "ReportUserStatistic", "ReportStatistic")<br />
+    <a class="fa fa-bar-chart" style="color:green; margin-bottom:10px"></a>&nbsp;&nbsp;@Html.ActionLink("Báo cáo thống kê thiết bị in ấn", "ReportPrinterStatistic", "ReportStatistic")<br />
+    <a class="fa fa-bar-chart" style="color:green; margin-bottom:10px"></a>&nbsp;&nbsp;@Html.ActionLink("Báo cáo thống kê tài liệu quản lý", "ReportDocumentStatistic", "ReportStatistic")<br />
+    <a class="fa fa-bar-chart" style="color:green; margin-bottom:10px"></a>&nbsp;&nbsp;@Html.ActionLink("Báo cáo thống kê lưu lượng in ấn", "ReportPrintTrafficStatistic", "ReportStatistic")<br />
+    <a class="fa fa-bar-chart" style="color:green; margin-bottom:10px"></a>&nbsp;&nbsp;@Html.ActionLink("Báo cáo thống kê chi in ấn", "ReportPrintingExpensesStatistic", "ReportStatistic")<br />
+</div>

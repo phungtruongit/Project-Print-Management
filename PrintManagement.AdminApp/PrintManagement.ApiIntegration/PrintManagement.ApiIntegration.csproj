@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="CategoryApiClient.cs" />
+    <Compile Remove="DTOs\User\UserStatic.cs" />
+    <Compile Remove="ICategoryApiClient.cs" />
+    <Compile Remove="ILanguageApiClient.cs" />
+    <Compile Remove="IOrderApiClient.cs" />
+    <Compile Remove="IProductApiClient.cs" />
+    <Compile Remove="IRoleApiClient.cs" />
+    <Compile Remove="ISlideApiClient.cs" />
+    <Compile Remove="LanguageApiClient.cs" />
+    <Compile Remove="OrderApiClient.cs" />
+    <Compile Remove="ProductApiClient.cs" />
+    <Compile Remove="RoleApiClient.cs" />
+    <Compile Remove="Serivices\CategoryApiClient.cs" />
+    <Compile Remove="Serivices\ICategoryApiClient.cs" />
+    <Compile Remove="Serivices\ILanguageApiClient.cs" />
+    <Compile Remove="Serivices\IOrderApiClient.cs" />
+    <Compile Remove="Serivices\IProductApiClient.cs" />
+    <Compile Remove="Serivices\IRoleApiClient.cs" />
+    <Compile Remove="Serivices\ISlideApiClient.cs" />
+    <Compile Remove="Serivices\LanguageApiClient.cs" />
+    <Compile Remove="Serivices\OrderApiClient.cs" />
+    <Compile Remove="Serivices\ProductApiClient.cs" />
+    <Compile Remove="Serivices\RoleApiClient.cs" />
+    <Compile Remove="Serivices\SlideApiClient.cs" />
+    <Compile Remove="SlideApiClient.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.12" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>

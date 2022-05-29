@@ -1,0 +1,41 @@
+﻿@model RoleAssignRequest
+@{
+    ViewData["Title"] = "Gán quyền";
+    var selectListRoles = ViewData["selectListRoles"] as IEnumerable<SelectListItem>;
+}
+
+@section header
+{
+Người dùng - Thêm mới người dùng
+}
+
+<div class="container-fluid">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-md-4">
+                <form asp-action="RoleAssign">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <input asp-for="IdUser" class="form-control" type="hidden" />
+                    <div class="form-group">
+                        <label class="control-label">Họ tên</label>
+                        <input asp-for="Name" class="form-control" readonly />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Quyền</label>
+                        @Html.DropDownListFor(Model => Model.IdRole,selectListRoles,"-- Quyền  --",new { @class = "form-control"})
+                        <span asp-validation-for="IdRole" class="text-danger"></span>
+                    </div>
+                   
+                    <button type="submit" class="btn btn-primary" style="width:110px">
+                        <a class="fa fa-save"></a> &nbsp;Lưu lại
+                    </button>
+                    <button type="button" class="btn btn-warning" style="width:110px">
+                        <a class="fa fa-th-list"></a> &nbsp;
+                        @Html.ActionLink("Danh sách", "Index")
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

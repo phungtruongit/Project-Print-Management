@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintManagement.AdminApp", "PrintManagement.AdminApp\PrintManagement.AdminApp.csproj", "{BE54E49A-A4C7-4B6C-9183-38EDEF6EA70E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintManagement.ApiIntegration", "PrintManagement.ApiIntegration\PrintManagement.ApiIntegration.csproj", "{28FE3D52-34A9-4704-96E0-0AEC641FC1EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintManagement.WatermarkHub", "PrintManagement.WatermarkHub\PrintManagement.WatermarkHub.csproj", "{E702F685-E035-46F5-9A54-2E7F42178421}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintManagement.EmailHub", "PrintManagement.EmailHub\PrintManagement.EmailHub.csproj", "{5591C0E9-B93E-486F-85FD-97E00978B01A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE54E49A-A4C7-4B6C-9183-38EDEF6EA70E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE54E49A-A4C7-4B6C-9183-38EDEF6EA70E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE54E49A-A4C7-4B6C-9183-38EDEF6EA70E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE54E49A-A4C7-4B6C-9183-38EDEF6EA70E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28FE3D52-34A9-4704-96E0-0AEC641FC1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28FE3D52-34A9-4704-96E0-0AEC641FC1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28FE3D52-34A9-4704-96E0-0AEC641FC1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28FE3D52-34A9-4704-96E0-0AEC641FC1EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E702F685-E035-46F5-9A54-2E7F42178421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E702F685-E035-46F5-9A54-2E7F42178421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E702F685-E035-46F5-9A54-2E7F42178421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E702F685-E035-46F5-9A54-2E7F42178421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5591C0E9-B93E-486F-85FD-97E00978B01A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5591C0E9-B93E-486F-85FD-97E00978B01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5591C0E9-B93E-486F-85FD-97E00978B01A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5591C0E9-B93E-486F-85FD-97E00978B01A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF23C405-8832-40C7-B367-0946897B91E5}
+	EndGlobalSection
+EndGlobal

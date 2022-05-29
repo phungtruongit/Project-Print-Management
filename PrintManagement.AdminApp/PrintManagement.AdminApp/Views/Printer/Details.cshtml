@@ -1,0 +1,139 @@
+﻿@model PrinterDTO
+
+@{
+    ViewData["Title"] = "Thiết bị in ấn";
+}
+
+@section header
+{
+    Printer - Chi tiết Máy in
+}
+
+<div class="container-fluid">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-md-12">
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        Tên máy in:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Display name:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.DriverName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Server name:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.ServerName)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Port name:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.PortName)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Máy in mặc định:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.IsDefaultPrinter)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Máy in mạng:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.IsNetwork)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Ví trí:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Location)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Chi phí in mặc định:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.DefaultCost)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Tổng jobs:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.TotalJobs)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Tổng pages:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.TotalPages)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Ngày sử dụng cuối:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.Raw(Convert.ToDateTime(Model.LastUsageDate).ToString("dd/MM/yyyy"))
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Ghi chú:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Note)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Người tạo:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.CreatedBy)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Ngày tạo:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.Raw(Convert.ToDateTime(Model.CreatedDate).ToString("dd/MM/yyyy"))
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Người cập nhật:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.ModifiedBy)
+                        <br />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Ngày cập nhật:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.Raw(Convert.ToDateTime(Model.ModifiedDate).ToString("dd/MM/yyyy"))
+                        <br />
+                    </dd>
+                </dl>
+               @* <button type="button" class="btn btn-primary">
+                    <a class="fa fa-edit"></a> &nbsp;
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Oid})
+                </button>*@
+                <button type="button" class="btn btn-warning">
+                    <a class="fa fa-th-list"></a> &nbsp;
+                    @Html.ActionLink("Danh sách", "Index")
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

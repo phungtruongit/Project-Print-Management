@@ -1,0 +1,55 @@
+﻿@model PrintManagement.ApiIntegration.BackupConfigDTO
+
+<div class="col-md-8">
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title"><b><i class="fa fa-refresh"></i>&nbsp;&nbsp; Cấu hình Sao lưu dữ liệu</b></h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <form asp-action="ApplyBackupConfig">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Oid" class="form-control" />
+                <div class="form-group">
+                    <label class="control-label">Vị trí lưu file backup</label>
+                    <input asp-for="BackupLocation" class="form-control" value="@Model.BackupLocation" required />
+                    <span asp-validation-for="BackupLocation" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                    <label class="control-label">Định kỳ sao lưu (ngày)</label>
+                    <input asp-for="BackupSchedule" class="form-control" value="@Model.BackupSchedule" required type="number" min="1" step="1" />
+                    <span asp-validation-for="BackupSchedule" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Định kỳ xoá file log (ngày)</label>
+                    <input asp-for="DeleteLogSchedule" class="form-control" value="@Model.DeleteLogSchedule" required type="number" min="1" step="1" />
+                    <span asp-validation-for="DeleteLogSchedule" class="text-danger"></span>
+                </div>*@
+                <button type="submit" class="btn btn-success" style="width:110px">
+                    <a class="fa fa-check-circle"></a> &nbsp; Áp dụng
+                </button>
+                <button type="button" class="btn btn-primary" style="width:110px">
+                    <a class="fa fa-cloud"></a> &nbsp;
+                    @Html.ActionLink("Sao lưu", "BackupNow")
+                </button>
+            </form>
+            <hr>
+            <form asp-action="RestoreNow">
+                <div class="form-group">
+                    <label class="control-label">Khôi phục dữ liệu (chọn file backup)</label>
+                    <input asp-for="BackupLocation" name="fileBackup" class="form-control" placeholder="Chọn file backup ..." required id="backup_database" type="file"/>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:110px">
+                    <a class="fa fa-heartbeat"></a> &nbsp; Khôi phục
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('backup_database').value = '';
+</script>

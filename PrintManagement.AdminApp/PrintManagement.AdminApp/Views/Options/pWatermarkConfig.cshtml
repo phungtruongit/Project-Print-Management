@@ -1,0 +1,17 @@
+﻿@model Tuple<PrintManagement.ApiIntegration.WatermarkConfigDTO,PrintManagement.ApiIntegration.WatermarkConfigDTO>
+
+<div class="col-md-8">
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title"><b><i class="fa fa-leaf"></i>&nbsp;&nbsp; Cấu hình Watermark</b></h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <partial name="pWcImageWatermarkConfig" model="Model.Item1"></partial>
+            <partial name="pWcTextWatermarkConfig" model="Model.Item2"></partial>
+        </div>
+    </div>
+</div>

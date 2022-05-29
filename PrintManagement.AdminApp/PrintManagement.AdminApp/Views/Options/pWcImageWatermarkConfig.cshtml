@@ -1,0 +1,90 @@
+﻿@model PrintManagement.ApiIntegration.WatermarkConfigDTO
+@{
+    var lstVerticalAlignment = PrintManagement.AdminApp.Common.CommonVariables.g_lstVerticalAlignment.Select(x => new SelectListItem(x.Name, x.Id.ToString()));
+    var lstHorizontalAlignment = PrintManagement.AdminApp.Common.CommonVariables.g_lstHorizontalAligment.Select(x => new SelectListItem(x.Name, x.Id.ToString()));
+}
+
+<div class="col-md-6">
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title"><b><i class="fa fa-image"></i>&nbsp;&nbsp; Watermark hình</b></h3>
+        </div>
+        <div class="box-body">
+            <form asp-action="ApplyImageWatermarkConfig" enctype="multipart/form-data" method="post"> 
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Oid" class="form-control" />
+                <div class="form-group">
+                    <label class="control-label">FileImage</label>
+                    @*<input asp-for="FileImage" class="form-control" value="@Model.FileImage" type="file" required />*@
+                    <input id="FileUpload_FormFile" type="file" name="file" value="@Model.FileImage" required/>
+                    <span asp-validation-for="FileImage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <img src="~/template/Admin/ImgWatermark/@Model.FileImage" alt="Chưa có" style="height:145px; border: solid 1px #ddd" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">X</label>
+                    <input asp-for="X" class="form-control" value="@Model.X" type="number" min="0" step="0.1" />
+                    <span asp-validation-for="X" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Y</label>
+                    <input asp-for="Y" class="form-control" value="@Model.Y" type="number" min="0" step="0.1" />
+                    <span asp-validation-for="Y" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">VerticalAlignment</label>
+                    @Html.DropDownListFor(Model => Model.VerticalAlignment,lstVerticalAlignment,"-- VerticalAlignment --",new { @class = "form-control"})
+                    <span asp-validation-for="VerticalAlignment" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">HorizontalAlignment</label>
+                    @Html.DropDownListFor(Model => Model.HorizontalAlignment,lstHorizontalAlignment,"-- HorizontalAlignment --",new { @class = "form-control"})
+                    <span asp-validation-for="HorizontalAlignment" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Height</label>
+                    <input asp-for="Height" class="form-control" value="@Model.Height" type="number" min="0" step="0.1" />
+                    <span asp-validation-for="Height" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Width</label>
+                    <input asp-for="Width" class="form-control" value="@Model.Width" type="number" min="0" step="0.1" />
+                    <span asp-validation-for="Width" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">RotateAngle</label>
+                    <input asp-for="RotateAngle" class="form-control" value="@Model.RotateAngle" type="number" min="0" step="0.1" />
+                    <span asp-validation-for="RotateAngle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">IsBackground</label>
+                    <input asp-for="IsBackground" class="form-control" value="@Model.IsBackground" readonly required />
+                    <span asp-validation-for="IsBackground" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Opacity</label>
+                    <input asp-for="Opacity" class="form-control" value="@Model.Opacity" required type="number" min="0" step="0.1" />
+                    <span asp-validation-for="Opacity" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-success" style="width:110px">
+                    <a class="fa fa-check-circle"></a> &nbsp; Áp dụng
+                </button>
+                <button type="button" class="btn btn-primary" style="width:110px">
+                    <a class="fa fa-bullseye"></a> &nbsp;
+                    @Html.ActionLink("Xem thử", "TestImageWatermark", 
+                    new {fileImage = Model.FileImage,
+                        x = Model.X,
+                        y = Model.Y,
+                        verticalAlignment = Model.VerticalAlignment,
+                        horizontalAlignment = Model.HorizontalAlignment,
+                        height = Model.Height,
+                        width = Model.Width,
+                        rotateAngle = Model.RotateAngle,
+                        isBackground = Model.IsBackground,
+                        opacity = Model.Opacity})
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

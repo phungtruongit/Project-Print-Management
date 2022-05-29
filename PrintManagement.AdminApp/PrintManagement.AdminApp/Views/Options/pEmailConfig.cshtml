@@ -1,0 +1,61 @@
+﻿@model PrintManagement.ApiIntegration.EmailConfigDTO
+
+<div class="col-md-8">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title"><b><i class="fa fa-envelope"></i>&nbsp;&nbsp; Cấu hình Email</b></h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <form asp-action="ApplyEmailConfig">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Oid" class="form-control" />
+                <div class="form-group">
+                    <label class="control-label">Host</label>
+                    <input asp-for="Host" class="form-control" value="@Model.Host" required />
+                    <span asp-validation-for="Host" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Port</label>
+                    <input asp-for="Port" class="form-control" value="@Model.Port" required />
+                    <span asp-validation-for="Port" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">UserName</label>
+                    <input asp-for="UserName" class="form-control" value="@Model.UserName" required />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Password</label>
+                    <input asp-for="Password" class="form-control" value="@Model.Password" required type="password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">SenderAddress</label>
+                    <input asp-for="SenderName" class="form-control" value="@Model.SenderName" required />
+                    <span asp-validation-for="SenderName" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-success" style="width:110px">
+                    <a class="fa fa-check-circle"></a> &nbsp; Áp dụng
+                </button>
+            </form>
+            <hr>
+            <form asp-action="TestMail">
+                <div class="form-group">
+                    <label class="control-label">Test Mail</label>
+                    <input asp-for="SenderName" name="recipientAddress" class="form-control" placeholder="Địa chỉ mail người nhận ..." required id="test_mail_address"/>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:110px">
+                    <a class="fa fa-space-shuttle"></a> &nbsp; Gửi Mail
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('test_mail_address').value = '';
+</script>

@@ -1,0 +1,67 @@
+﻿@model DocumentUploadRequest
+
+@{
+    ViewData["Title"] = "Tải lên tài liệu";
+    var errorMessage = ViewBag.ErrorMessage as string;
+}
+
+@section header
+{
+    Document - Tải lên tài liệu
+}
+
+<div class="container-fluid">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-md-4">
+                <form asp-action="HandleUpload" enctype="multipart/form-data" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label" for="FileUpload_FormFile">File</label>&nbsp;<i>(*.pdf, *.doc, *.docx, *.xls, *.xlsx, *.ppt, *.pptx, *.txt, *.png, *.jpeg) - giới hạn file 2GB</i>
+                        <div class="editor-field">
+                            <input id="FileUpload_FormFile" type="file" name="file" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Ghi chú</label>
+                        <input asp-for="Note" class="form-control" />
+                        <span asp-validation-for="Note" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:110px">
+                        <a class="fa fa-save"></a> &nbsp;Tải lên
+                    </button>
+                    <div style="margin-top:15px">
+                        <output name="result"></output>
+                    </div>
+                    <button type="button" class="btn btn-warning" style="width:110px">
+                        <a class="fa fa-th-list"></a> &nbsp;
+                        @Html.ActionLink("Danh sách", "Index")
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@*
+<script>
+    async function AJAXSubmit (oFormElement) {
+      var resultElement = oFormElement.elements.namedItem("result");
+      const formData = new FormData(oFormElement);
+
+      try {
+      const response = await fetch(oFormElement.action, {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        //window.location.href = '/Document/Index';
+      }
+
+      resultElement.value = 'Result: ' + response.status + ' ' +
+        response.statusText;
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+</script>*@
